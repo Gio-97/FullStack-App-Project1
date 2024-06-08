@@ -17,6 +17,7 @@ import { verifyToken } from "./middleware/auth.js";
 import User from "./models/User.js";
 import Post from "./models/Post.js";
 import { users, posts } from "./data/index.js"
+import { log } from "console";
 //CONFIGURATIONS
 
 const __fileName = fileURLToPath(import.meta.url);
@@ -63,8 +64,12 @@ mongoose.connect(process.env.MONGO_URL, {
 }).then (()=> {
     app.listen(PORT, () => console.log(`Server port: ${PORT}`));
 
+    
+
     //Add this data one time
-    User.insertMany(users);
-    Post.insertMany(posts);
+    // User.insertMany(users);
+    // Post.insertMany(posts);
 })
 .catch((error) => console.log(`${error} did not connect`));
+console.log(PORT);
+    console.log(process.env.PORT);
